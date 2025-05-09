@@ -22,10 +22,10 @@ export const validateUser = checkSchema({
   		   isStrongPassword: {
     				options: {
       					minLength: 8,
-      					minNumbers: 1, // Changed from 2 to 1
-      					minSymbols: 0, // Explicitly set symbols to 0
+      					minNumbers: 1, 
+      					minSymbols: 0, 
       					minLowercase: 1,
-      					minUppercase: 0 // Adjust as needed
+      					minUppercase: 0
     				},
     			errorMessage: 'Your password must be at least 8 characters and contain at least 1 number',
   			}
@@ -61,22 +61,5 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
   }
   next();
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

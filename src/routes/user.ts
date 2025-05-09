@@ -8,7 +8,7 @@ import * as userController from '../controllers/user.ts';
 import passport from 'passport';
 import { AuthController } from '../controllers/auth.ts';
 import { sanitizeAuthInput } from '../middlewares/auth.ts';
-
+import { requireAuth } from '../middlewares/auth.ts';
 
 
 
@@ -25,12 +25,13 @@ router.post('/login',
 );
 
 
-router.put('/update', validateUserUpdate,
+router.put('/update', requireAuth, validateUserUpdate,
 	   handleValidationErrors,
 	   userController.updateUser);
 
 router.post('/logout',
-  AuthController.logout
+	    requireAuth,	
+	    AuthController.logout
 );
 
 

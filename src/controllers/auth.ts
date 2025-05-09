@@ -17,7 +17,7 @@ export class AuthController {
       { session: false }, 
       (err: Error | null, data: { user: SafeUser, token: string } | false, info: { message?: string }) => {
         if (err) return next(err);
-        if (!data) return res.status(401).json({ error: info?.message || 'Login failed' });
+        if (!data) return res.status(401).json({ error: info?.message || 'Invalid Credentials' });
         
         
         res.json({
@@ -28,6 +28,6 @@ export class AuthController {
     )(req, res, next);
   }  
   static async logout(req: Request, res: Response) {
-    res.json({ message: 'Logout successful. Please discard your token.' });
+    res.json({ message: 'Logout successful.' });
   }
 }
